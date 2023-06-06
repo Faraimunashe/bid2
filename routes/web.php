@@ -38,15 +38,17 @@ Route::group(['middleware' => ['auth', 'role:seller']], function(){
     Route::post('/seller/update-productImage', 'App\Http\Controllers\seller\DashboardController@update')->name('seller-update-productImage');
     Route::post('/seller/delete-product', 'App\Http\Controllers\seller\DashboardController@delete')->name('seller-delete-product');
 
-    Route::get('/seller/bid', 'App\Http\Controllers\seller\bidController@index')->name('seller-bid');
-    Route::post('/seller/accept-bid', 'App\Http\Controllers\seller\bidController@accept')->name('seller-accept-bid');
+    //Route::get('/seller/bidding{', 'App\Http\Controllers\seller\DashboardController@index')->name('seller-dashboard');
+
+    Route::get('/seller/biddings/{product_id}', 'App\Http\Controllers\seller\BidController@index')->name('seller-bid');
+    Route::post('/seller/accept-bid', 'App\Http\Controllers\seller\BidController@accept')->name('seller-accept-bid');
 });
 
 Route::group(['middleware' => ['auth', 'role:user']], function(){
     Route::get('/user/dashboard', 'App\Http\Controllers\user\DashboardController@index')->name('user-dashboard');
-    Route::get('/user/add-bid', 'App\Http\Controllers\user\DashboardController@bid')->name('user-add-bid');
+    Route::post('/user/add-bid', 'App\Http\Controllers\user\DashboardController@bid')->name('user-add-bid');
 
-    Route::get('/user/bid', 'App\Http\Controllers\user\BidController@index')->name('user-bid');
+    Route::get('/user/my-bids', 'App\Http\Controllers\user\BidController@index')->name('user-bids');
     Route::get('/user/delete-bid', 'App\Http\Controllers\user\BidController@delete')->name('user-delete-bid');
 });
 

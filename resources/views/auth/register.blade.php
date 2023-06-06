@@ -2,6 +2,18 @@
     <form class="row g-3 needs-validation" method="POST" action="{{ route('register') }}">
         @csrf
         <div class="col-12">
+            <label for="yourEmail" class="form-label">Role</label>
+            <div class="input-group has-validation">
+                <select name="role" class="form-control" id="yourEmail" required>
+                    <option selected disabled>Select Role</option>
+                    <option value="user">Buyer</option>
+                    <option value="seller">Seller</option>
+                </select>
+                <div class="invalid-feedback">Please enter role.</div>
+            </div>
+        </div>
+
+        <div class="col-12">
             <label for="yourEmail" class="form-label">Username</label>
             <div class="input-group has-validation">
                 <input type="text" name="name" class="form-control" id="yourEmail" required>

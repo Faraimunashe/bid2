@@ -49,12 +49,17 @@
                             <tbody>
                                 @php
                                     $count = 0;
+                                    $winner = false;
                                 @endphp
                                 @foreach ($bids as $bid)
                                     <tr>
                                         <th scope="row">
                                             @php
                                                 $count++;
+                                                if($bid->winner == true)
+                                                {
+                                                    $winner = true;
+                                                }
                                                 echo $count;
                                             @endphp
                                         </th>
@@ -68,9 +73,11 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#acceptModal{{$bid->id}}">
-                                                <i class="bi bi-pencil-square"></i>
-                                            </button>
+                                            @if(!$winner)
+                                                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#acceptModal{{$bid->id}}">
+                                                    <i class="bi bi-pencil-square"></i>
+                                                </button>
+                                            @endif
                                         </td>
                                     </tr>
                                     <div class="modal fade" id="acceptModal{{$bid->id}}" tabindex="-1">

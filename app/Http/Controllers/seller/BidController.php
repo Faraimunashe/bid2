@@ -4,14 +4,20 @@ namespace App\Http\Controllers\seller;
 
 use App\Http\Controllers\Controller;
 use App\Models\Bid;
+use App\Models\Product;
 use Exception;
 use Illuminate\Http\Request;
 
 class BidController extends Controller
 {
-    public function index($bid_id)
+    public function index($product_id)
     {
-        return view('seller.bidding');
+        $product = Product::find($product_id);
+        $bids = Bid::where('product_id', $product_id)->get();
+        return view('seller.bidding', [
+            'bids' => $bids,
+            'product' => $product
+        ]);
     }
 
     public function accept(Request $request)

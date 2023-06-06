@@ -60,6 +60,9 @@
                             <button type="button" class="btn btn-secondary m-1" style="float: right;" data-bs-toggle="modal" data-bs-target="#updateModal{{$product->id}}">
                                 <i class="bi bi-pencil-square"></i>
                             </button>
+                            <a href="{{route('seller-bid', $product->id)}}" class="btn btn-dark m-1" style="float: right;" >
+                                <i class="bi bi-eye"></i>
+                            </a>
                         </div>
                     </div>
                 </div>

@@ -41,29 +41,12 @@
                     <span>Suggestions</span>
                 </a>
             </li>
+        @elseif (Auth::user()->hasRole('seller'))
         @elseif (Auth::user()->hasRole('user'))
             <li class="nav-item">
-                <a class="nav-link collapsed" href="{{route('user-stands')}}">
-                    <i class="bi bi-house"></i>
-                    <span>Stands</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="{{route('user-suggestions')}}">
+                <a class="nav-link collapsed" href="{{route('user-bids')}}">
                     <i class="bi bi-stickies"></i>
-                    <span>Suggestions</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="{{route('user-applications')}}">
-                    <i class="bi bi-clipboard"></i>
-                    <span>Applications</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="{{route('user-transactions')}}">
-                    <i class="bi bi-bookmarks"></i>
-                    <span>Invoice</span>
+                    <span>My Bids</span>
                 </a>
             </li>
         @endif
